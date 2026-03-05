@@ -1,0 +1,51 @@
+theme = "rose_pine_moon"
+
+[editor]
+line-number = "relative" # (추천) 상대 줄 번호 - Vim 사용자에겐 필수
+cursorline = true       # 현재 커서가 있는 줄 강조
+true-color = true       # 24비트 트루컬러 사용
+scroll-lines = 2        # 마우스 휠 한 틱당 이동 줄 수
+default-yank-register = "+"
+default-line-ending = "lf"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+# 선택 영역 확장/축소
+A-j = "expand_selection"
+A-k = "shrink_selection"
+x = ["select_mode", "extend_line_below"]
+X = ["select_mode", "extend_line_above"]
+# Lazygit - Ctrl+G
+C-g = [":write-all", ":insert-output lazygit >/dev/tty", ":redraw", ":reload-all"]
+
+# Scooter - Ctrl+R (프로젝트 전체 검색/치환)
+C-r = [":write-all", ":insert-output scooter --no-stdin >/dev/tty", ":redraw", ":reload-all"]
+
+# 커서 위치의 단어 자동 선택 후 검색
+"*" = ["move_prev_word_start", "move_next_word_end", "search_selection_detect_word_boundaries"]
+
+[keys.normal.space]
+q = ":quit!"
+l = ":reload-all"
+
+# AI: 선택 → 파일경로+내용 클립보드 복사 (Space i)
+i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name}'
+
+# Yazi 파일 탐색기 - Space+e (Wiki Recipe 방식)
+e = [
+  ':sh rm -f /tmp/yazi-chooser',
+  ':insert-output ~/.config/helix/yazi-picker.sh "%{buffer_name}"',
+  ':sh printf "\\x1b[?1049h\\x1b[?2004h" > /dev/tty',
+  ':open %sh{sed "s|^search:[^:]*:[0-9]*:[0-9]*||" /tmp/yazi-chooser}',
+  ':redraw',
+  ':set mouse false',
+  ':set mouse true',
+]
+
+[keys.select]
+X = "extend_line_above"
+
+[keys.select.space]
+i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name}'

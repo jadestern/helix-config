@@ -1,0 +1,8 @@
+#!/bin/bash
+# hx-ai: 선택 내용 + 파일경로를 클립보드에 복사
+# 사용: :pipe-to hx-ai %{buffer_name}
+
+FILEPATH="${1:-unknown}"
+SELECTION=$(cat)
+
+printf "path: %s\n\`\`\`\n%s\n\`\`\`\n" "$FILEPATH" "$SELECTION" | pbcopy
