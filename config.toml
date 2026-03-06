@@ -4,6 +4,7 @@ theme = "rose_pine_moon"
 line-number = "relative" # (추천) 상대 줄 번호 - Vim 사용자에겐 필수
 cursorline = true       # 현재 커서가 있는 줄 강조
 true-color = true       # 24비트 트루컬러 사용
+mouse = true            # 마우스 활성화 (스크롤 시 커서 이동)
 scroll-lines = 2        # 마우스 휠 한 틱당 이동 줄 수
 default-yank-register = "+"
 default-line-ending = "lf"
@@ -31,7 +32,7 @@ q = ":quit!"
 l = ":reload-all"
 
 # AI: 선택 → 파일경로+내용 클립보드 복사 (Space i)
-i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name}'
+i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name} %{cursor_line}'
 
 # Yazi 파일 탐색기 - Space+e (Wiki Recipe 방식)
 e = [
@@ -48,4 +49,4 @@ e = [
 X = "extend_line_above"
 
 [keys.select.space]
-i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name}'
+i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name} %{cursor_line}'
