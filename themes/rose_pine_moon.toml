@@ -1,2 +1,4 @@
 inherits = "rose_pine_moon"
 "ui.background" = {}
+"ui.virtual.inlay-hint" = { fg = "#6e6a86" }
+"ui.statusline.separator" = { fg = "#6e6a86" }

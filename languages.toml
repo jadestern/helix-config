@@ -3,6 +3,14 @@
 command = "vtsls"
 args = ["--stdio"]
 
+[language-server.vtsls.config.typescript.inlayHints]
+parameterNames = { enabled = "all" }
+parameterTypes = { enabled = true }
+variableTypes = { enabled = true }
+propertyDeclarationTypes = { enabled = true }
+functionLikeReturnTypes = { enabled = true }
+enumMemberValues = { enabled = true }
+
 # 전역 LSP 설정에서 vtsls를 사용하도록 지정
 [[language]]
 name = "typescript"
