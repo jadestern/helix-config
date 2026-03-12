@@ -8,9 +8,29 @@ mouse = true            # 마우스 활성화 (스크롤 시 커서 이동)
 scroll-lines = 2        # 마우스 휠 한 틱당 이동 줄 수
 default-yank-register = "+"
 default-line-ending = "lf"
+rulers = [120]
+completion-replace = true
+color-modes = true
+rainbow-brackets = true
+
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+after-delay.timeout = 300
 
 [editor.file-picker]
 hidden = false
+
+[editor.indent-guides]
+render = true
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "position", "file-type", "version-control"]
 
 [keys.normal]
 # 선택 영역 확장/축소
@@ -18,21 +38,31 @@ A-j = "expand_selection"
 A-k = "shrink_selection"
 x = ["select_mode", "extend_line_below"]
 X = ["select_mode", "extend_line_above"]
-# Lazygit - Ctrl+G
-C-g = [":write-all", ":insert-output lazygit >/dev/tty", ":redraw", ":reload-all"]
 
 # Scooter - Ctrl+R (프로젝트 전체 검색/치환)
 C-r = [":write-all", ":insert-output scooter --no-stdin >/dev/tty", ":redraw", ":reload-all"]
+
+esc = ["collapse_selection", "keep_primary_selection"]
 
 # 커서 위치의 단어 자동 선택 후 검색
 "*" = ["move_prev_word_start", "move_next_word_end", "search_selection_detect_word_boundaries"]
 
 [keys.normal.space]
-q = ":quit!"
 l = ":reload-all"
+q = ":quit!"
 
 # AI: 선택 → 파일경로+내용 클립보드 복사 (Space i)
 i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name} %{cursor_line}'
+
+[keys.normal.space.g]
+b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"  # 현재 줄 Git blame
+d = ":run-shell-command git diff %{buffer_name}"  # 현재 파일 Git diff
+f = "changed_file_picker"  # 변경된 파일 목록 (기본 space g)
+l = [":write-all", ":insert-output lazygit >/dev/tty", ":redraw", ":reload-all"]  # Lazygit
+x = ":reset-diff-change"  # 커서 위치 hunk 되돌리기
+
+[keys.normal.space.t]
+l = ":toggle lsp.display-inlay-hints"
 
 # Yazi 파일 탐색기 - Space+e (Wiki Recipe 방식)
 e = [
@@ -49,4 +79,12 @@ e = [
 X = "extend_line_above"
 
 [keys.select.space]
+# AI: 선택 → 파일경로+내용 클립보드 복사 (Space i)
 i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name} %{cursor_line}'
+
+[keys.select.space.g]
+b = ":run-shell-command git blame -L %{selection_line_start},%{selection_line_end} %{buffer_name}"  # 선택 영역 Git blame
+d = ":run-shell-command git diff %{buffer_name}"  # 현재 파일 Git diff
+f = "changed_file_picker"  # 변경된 파일 목록
+l = [":write-all", ":insert-output lazygit >/dev/tty", ":redraw", ":reload-all"]  # Lazygit
+x = ":reset-diff-change"  # 커서 위치 hunk 되돌리기
