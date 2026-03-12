@@ -61,9 +61,6 @@ f = "changed_file_picker"  # 변경된 파일 목록 (기본 space g)
 l = [":write-all", ":insert-output lazygit >/dev/tty", ":redraw", ":reload-all"]  # Lazygit
 x = ":reset-diff-change"  # 커서 위치 hunk 되돌리기
 
-[keys.normal.space.t]
-l = ":toggle lsp.display-inlay-hints"
-
 # Yazi 파일 탐색기 - Space+e (Wiki Recipe 방식)
 e = [
   ':sh rm -f /tmp/yazi-chooser',
@@ -74,6 +71,9 @@ e = [
   ':set mouse false',
   ':set mouse true',
 ]
+
+[keys.normal.space.t]
+l = ":toggle lsp.display-inlay-hints"
 
 [keys.select]
 X = "extend_line_above"
