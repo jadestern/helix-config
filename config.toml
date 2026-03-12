@@ -54,13 +54,6 @@ q = ":quit!"
 # AI: 선택 → 파일경로+내용 클립보드 복사 (Space i)
 i = ':pipe-to ~/.config/helix/scripts/hx-ai %{buffer_name} %{cursor_line}'
 
-[keys.normal.space.g]
-b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"  # 현재 줄 Git blame
-d = ":run-shell-command git diff %{buffer_name}"  # 현재 파일 Git diff
-f = "changed_file_picker"  # 변경된 파일 목록 (기본 space g)
-l = [":write-all", ":insert-output lazygit >/dev/tty", ":redraw", ":reload-all"]  # Lazygit
-x = ":reset-diff-change"  # 커서 위치 hunk 되돌리기
-
 # Yazi 파일 탐색기 - Space+e (Wiki Recipe 방식)
 e = [
   ':sh rm -f /tmp/yazi-chooser',
@@ -71,6 +64,13 @@ e = [
   ':set mouse false',
   ':set mouse true',
 ]
+
+[keys.normal.space.g]
+b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"  # 현재 줄 Git blame
+d = ":run-shell-command git diff %{buffer_name}"  # 현재 파일 Git diff
+f = "changed_file_picker"  # 변경된 파일 목록 (기본 space g)
+l = [":write-all", ":insert-output lazygit >/dev/tty", ":redraw", ":reload-all"]  # Lazygit
+x = ":reset-diff-change"  # 커서 위치 hunk 되돌리기
 
 [keys.normal.space.t]
 l = ":toggle lsp.display-inlay-hints"
