@@ -12,6 +12,7 @@ rulers = [120]
 completion-replace = true
 color-modes = true
 rainbow-brackets = true
+trim-trailing-whitespace = true
 
 [editor.auto-save]
 focus-lost = true
