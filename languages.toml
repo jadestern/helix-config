@@ -33,3 +33,10 @@ name = "jsx"
 auto-format = true
 language-servers = [ "vtsls" ]
 
+[[language]]
+name = "markdown"
+soft-wrap.enable = true
+soft-wrap.wrap-at-text-width = true
+text-width = 80
+rulers = []
+

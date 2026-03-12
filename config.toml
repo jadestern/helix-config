@@ -13,6 +13,16 @@ completion-replace = true
 color-modes = true
 rainbow-brackets = true
 trim-trailing-whitespace = true
+end-of-line-diagnostics = "hint"
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.soft-wrap]
+enable = true
 
 [editor.auto-save]
 focus-lost = true
@@ -23,6 +33,7 @@ after-delay.timeout = 300
 hidden = false
 
 [editor.indent-guides]
+character = "╎"
 render = true
 
 [editor.inline-diagnostics]
