@@ -64,6 +64,7 @@ esc = ["collapse_selection", "keep_primary_selection"]
 
 [keys.normal.space]
 l = ":reload-all"
+r = ":reload-all"
 q = ":quit!"
 
 # AI: 선택 → 파일경로+내용 클립보드 복사 (Space i)
